@@ -46,6 +46,7 @@ def postNew():
             subject = form.subject.data,
             content = form.content.data,
             author = current_user.id,
+            readorno = form.readorno.data, 
             # This sets the modifydate to the current datetime.
             modifydate = dt.datetime.utcnow
         )
@@ -91,12 +92,16 @@ def postEdit(postID):
         editPost.update(
             subject = form.subject.data,
             content = form.content.data,
-            modifydate = dt.datetime.utcnow
+            modifydate = dt.datetime.utcnow,
+            readorno = form.readorno.data
+
         )
         return redirect(url_for('post',postID=postID))
 
     form.subject.data = editPost.subject
     form.content.data = editPost.content
+    form.readorno.data = editPost.readorno
+
 
     return render_template('postform.html',form=form)
 
@@ -109,7 +114,7 @@ def commentNew(postID):
         newComment = Comment(
             author = current_user.id,
             post = postID,
-            content = form.content.data
+            content = form.content.data,
         )
         newComment.save()
         return redirect(url_for('post',postID=postID))

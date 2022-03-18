@@ -22,8 +22,18 @@
                 {% endfor %}
             </p>
             <p>
+                {{ form.readorno.label }}<br>
+                {{ form.readorno() }}<br>
+                {% for error in form.readorno.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
                 {{form.submit()}}
             </p>
+            
+
+
         </form>
         
 {% endblock %}

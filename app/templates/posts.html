@@ -5,6 +5,9 @@
 <div class="row">
     <div class="col-4">
         <h1 class="display-1">All Posts</h1>
+        
+
+
     </div>
     <div class="col">
         <a href="/post/new" class="btn btn-primary btn-sm mt-5" role="button">New Post</a>
@@ -35,6 +38,12 @@
                 {% endif %}
                 {{post.subject}}
             </div>
+            <div class="col">
+                {% if loop.index == 1 %}
+                    <h3 class="display-5">Do you read?</h3>
+                {% endif %}
+                {{post.readorno}}
+            </div>
         </div>
     {% endfor %}
 {% else %}
@@ -42,3 +51,5 @@
 {% endif %}
 
 {% endblock %}
+
+
