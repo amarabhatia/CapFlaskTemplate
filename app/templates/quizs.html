@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="bg-dark text-white">
+
+<div class="row">
+    <div class="col-4">
+        <h1 class="display-1">All Posts</h1>
+    </div>
+    <div class="col">
+        <a href="/quiz/new" class="btn btn-primary btn-sm mt-5" role="button">New Book Review</a>
+    </div>
+</div>
+
+{% if quizs %}
+    {% for quiz in quizs %}
+        <div class="row border-bottom">
+            <div class="col-2">
+                {% if loop.index == 1 %}
+                <h3 class="display-7 text-success">Date</h3>
+                {% endif %}
+                <a href="/quiz/delete/{{quiz.id}}">Delete</a> - 
+                <a href="/quiz/{{quiz.id}}">
+                    {{moment(quiz.createdate).calendar()}}
+                </a>
+            </div>
+        
+            <div class="col">
+                {% if loop.index == 1 %}
+                    <h3 class="display-7 text-success">Do you like to read?</h3>
+                {% endif %}
+                {{quiz.likeread}}
+            </div>
+            <div class="col">
+                {% if loop.index == 1 %}
+                    <h3 class="display-7 text-success">What is your favortie Genre?</h3>
+                {% endif %}
+                {{quiz.genre}}
+            </div>
+           
+        </div>
+    {% endfor %}
+{% else %}
+    <h1>No Posts</h1>
+</div>
+{% endif %}
+
+{% endblock %}
+
+

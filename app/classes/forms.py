@@ -73,3 +73,18 @@ class PostForm(FlaskForm):
 class CommentForm(FlaskForm):
     content = TextAreaField('Comment', validators=[DataRequired()])
     submit = SubmitField('Comment')
+
+class BookReviewForm(FlaskForm):
+    # fname = StringField('First Name', validators=[DataRequired()])
+    # lname = StringField('Last Name', validators=[DataRequired()])
+    booktitle = StringField('Title of Novel:', validators=[DataRequired()]) 
+    authorname = StringField('Author:', validators=[DataRequired()]) 
+    rating = SelectField('How would you rate it out of five?',choices=[("1","1"),("1.5","1.5"),("2","2"),("2.5","2.5"),("3","3"),("3.5","3.5"),("4","4"),("4.5","4.5"),("5","5")])
+    userthoughts = TextAreaField('What were your thoughts on the book?', validators=[DataRequired()]) 
+    spoilers =  SelectField('Are there spoilers?',choices=[("yes","yes"),("no","no")])
+    submit = SubmitField('Post')
+
+class QuizForm(FlaskForm):
+    likeread = SelectField('Do you like to read?',choices=[("yes","yes"),("sort of","sort of"),("it's complicated","it's complicated"),("no","no")])
+    genre = SelectField('Which Genre do you enjoy??',choices=[("yes","yes"),("sort of","sort of"),("it's complicated","it's complicated"),("no","no")])
+    submit = SubmitField('Post')
