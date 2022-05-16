@@ -7,7 +7,7 @@
 from app import app
 from flask import flash
 from flask_login import UserMixin
-from mongoengine import FileField, EmailField, StringField, ReferenceField, DateTimeField, CASCADE
+from mongoengine import FileField, EmailField, StringField, ReferenceField, DateTimeField, IntField, CASCADE
 from flask_mongoengine import Document
 from werkzeug.security import generate_password_hash, check_password_hash
 import datetime as dt
@@ -87,10 +87,18 @@ class BookReview(Document):
     }
 class Quiz(Document):
     author = ReferenceField('User',reverse_delete_rule=CASCADE)
-    likeread = StringField() 
-    genre = StringField() 
     createdate = DateTimeField(default=dt.datetime.utcnow)
     modifydate = DateTimeField()
+    likeread = IntField() 
+    genre = IntField() 
+    sizebook = IntField() 
+    movie = IntField()
+    favtrope = IntField()
+    dreamv = IntField() 
+    pickbook = IntField() 
+    booksyear = IntField() 
+    bookquote = IntField() 
+    total = IntField() 
 
     meta = {
         'ordering': ['-createdate']

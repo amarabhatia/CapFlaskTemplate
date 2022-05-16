@@ -8,7 +8,7 @@ from flask_wtf import FlaskForm
 from mongoengine.fields import EmailField
 import mongoengine.errors
 from wtforms.validators import URL, NumberRange, Email, Optional, InputRequired, ValidationError, DataRequired, EqualTo
-from wtforms import PasswordField, StringField, SubmitField, TextAreaField, HiddenField, IntegerField, SelectField, FileField, BooleanField
+from wtforms import PasswordField, StringField, SubmitField, TextAreaField, HiddenField, IntegerField, SelectField, FileField, BooleanField 
 from app.classes.data import User
 
 class LoginForm(FlaskForm):
@@ -85,6 +85,13 @@ class BookReviewForm(FlaskForm):
     submit = SubmitField('Post')
 
 class QuizForm(FlaskForm):
-    likeread = SelectField('Do you like to read?',choices=[("yes","yes"),("sort of","sort of"),("it's complicated","it's complicated"),("no","no")])
-    genre = SelectField('Which Genre do you enjoy??',choices=[("yes","yes"),("sort of","sort of"),("it's complicated","it's complicated"),("no","no")])
+    likeread = SelectField('Do you like to read?',choices=[(1,"yes"),(2,"sort of"),(3,"no")])
+    genre = SelectField('Which Genre do you enjoy?',choices=[(1,"Non-Fiction"),(2,"Fiction"),(3,"None"),(1, "Horror"),(2,"Romance"),(1,"Bibliograhy")])
+    sizebook = SelectField('How long of a book are you looking for?',choices=[(3,"100 Pages"),(2," 250 Pages"),(1,"300+ Pages")])
+    movie = SelectField('Choose one of these movies you like the most:',choices=[(1,"Pulp Fiction"),(3, "Cloudy With a Chance of Meatballs"),(1, "The Godfather"),(2,"Anything Adam Sandler"),(3,"Willy Wonka and the Chocolate Factory")])
+    favtrope = SelectField('Which is your favorite saying?',choices=[(1,"Kill two birds with one stone"),(2,"No pain no gain"),(3,"It's a peice of cake")])
+    dreamv = SelectField('Where is your dream vacation?',choices=[(1,"Rome"),(1,"Italy"),(2, "France"), (2, "Tahiti"), (3, "Singapore"),(2, "Bora Bora"),(2,"Hawaii"),(3,"LA")])
+    pickbook = SelectField('Would you pick up a book if it was not for school?',choices=[(1,"Yes"),(2, "Depends"), (2, "Sometimes"), (3, "Probably Not"),(3,"No,Never")])
+    booksyear = SelectField('How many books do you read per year?',choices=[(3,"0"),(2, "1-5"), (1, "5+")])
+    bookquote = SelectField('Which is your favorite book quote?',choices=[(3,"Love is or it ain't. Thin love ain't love at all."),(2, "I am not afraid of storms, for I am learning how to sail my ship."), (1, "It's the possibility of having a dream come true that makes life interesting."),(3,"What's the point of having a voice if you're gonna be silent in those moments you shouldn't be?")])
     submit = SubmitField('Post')

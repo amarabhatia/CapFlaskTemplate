@@ -10,7 +10,15 @@ from app.classes.data import Quiz
 from app.classes.forms import QuizForm
 from flask_login import login_required
 import datetime as dt
+import random
  
+#books 1 make thatr list images 
+books1 = ['cryinghmart.jpg','fiveuntold.jpg', 'heaven.jpg','badblood.jpg', 'stoner.jpg', 'boxman.jpg','beautymyth.jpg','moveablefeast.jpg','outofthisfurnace.jpg','littlelife.jpg']
+books2 = ['beautifulboy.jpg', 'bunny.jpg','mrripley.jpg','playaslays.jpg','invisibleman.jpg', 'americanyouth.jpg','lovemedo.jpg']
+books3 = ['janeeyre.jpg','maliburising.jpg', 'persepolis.jpg','dancingelephants.pjg','norwegianwood.jpg','frankenstein.jpg','pandp.jpg','lookingalaska.jpg']
+#ABOVE CODE have it equal nameofimg.jpg 
+
+
 # This is the route to list all posts
 @app.route('/quiz/list')
 # This means the user must be logged in to see this page
@@ -35,9 +43,18 @@ def quizList():
 def quiz(quizID):
     # retrieve the post using the postID
     thisQuiz = Quiz.objects.get(id=quizID)
+    if thisQuiz.total == 1:
+        print(1)
+        bookImg = books1[random.randint(0,len(books1)-1)]
+    elif thisQuiz.total == 2:
+        print(2)
+        bookImg = books2[random.randint(0,len(books2)-1)]
+    else:
+        print(3)
+        bookImg = books3[random.randint(0,len(books3)-1)]
  
     # Send the post object and the comments object to the 'post.html' template.
-    return render_template('quiz.html',quiz=thisQuiz)
+    return render_template('quiz.html',quiz=thisQuiz,bookImg=bookImg)
  
 # This route will delete a specific post.  You can only delete the post if you are the author.
 # <postID> is a variable sent to this route by the user who clicked on the trash can in the
@@ -73,7 +90,7 @@ def QuizNew():
     # This is a conditional that evaluates to 'True' if the user submitted the form successfully.
     # validate_on_submit() is a method of the form object.
     if form.validate_on_submit():
- 
+        total = (int(form.likeread.data) + int(form.genre.data) + int(form.sizebook.data) + int(form.movie.data) + int(form.favtrope.data)) / 5
         # This stores all the values that the user entered into the new post form.
         # Post() is a mongoengine method for creating a new post. 'newPost' is the variable
         # that stores the object that is the result of the Post() method.  
@@ -85,16 +102,24 @@ def QuizNew():
            # rating = form.rating.data,
             likeread = form.likeread.data,
             genre = form.genre.data,
+            sizebook = form.sizebook.data,
+            movie = form.movie.data,
+            favtrope = form.favtrope.data,
+            dreamv = form.dreamv.data,
+            pickbook = form.pickbook.data,
+            booksyear = form.booksyear.data,
+            bookquote = form.bookquote.data,
+            total = total,
 
             #spoilers = form.spoilers.data,
-   
+
             # This sets the modifydate to the current datetime.
             modifydate = dt.datetime.utcnow
         )
         # This is a method that saves the data to the mongoDB database.
         newQuiz.save()
         newQuiz.reload()
- 
+        
         # Once the new post is saved, this sends the user to that post using redirect.
         # and url_for. Redirect is used to redirect a user to different route so that
         # routes code can be run. In this case the user just created a post so we want
@@ -135,6 +160,13 @@ def QuizEdit(QuizID):
             modifydate = dt.datetime.utcnow,
             likeread = form.likeread.data,
             genre = form.genre.data,
+            sizebook = form.sizebook.data,
+            movie = form.movie.data,
+            favtrope = form.favtrope.data,
+            dreamv = form.dreamv.data,
+            pickbook = form.pickbook.data,
+            booksyear = form.booksyear.data,
+            bookquote = form.bookquote.data,
 
           #  spoilers = form.spoilers.data
         )
@@ -147,6 +179,16 @@ def QuizEdit(QuizID):
    # form.rating.data = editQuiz.rating
     form.likeread.data = editQuiz.likeread
     form.genre.data = editQuiz.genre
+    form.sizebook.data = editQuiz.sizebook
+    form.movie.data = editQuiz.movie
+    form.favtrope.data = editQuiz.favtrope
+    form.dreamv.data = editQuiz.dreamv
+    form.pickbook.data = editQuiz.pickbook
+    form.booksyear.data = editQuiz.booksyear
+    form.bookquote.data = editQuiz.bookquote
+
+
+
 
   #  form.spoilers.data = editQuiz.spoilers
  

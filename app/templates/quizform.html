@@ -4,9 +4,11 @@ copy this one and then edit it. -->
 {% extends "base.html" %}
 
 {% block body %}
+<div class="row" style="background-color:rgb(0, 0, 0); color: aliceblue ;">
+        <h5><a class="nav-link" href="/quiz/list">Click here to view everyones response</a>
+        </h5>
         <h1>Book Review Post</h1>
-
-        <!--List all errors in a group at the top-->
+                <!--List all errors in a group at the top-->
         {% for field in form.errors %}
             {% for error in form.errors[field] %}
                 <div class="alert alert-error">
@@ -34,10 +36,56 @@ copy this one and then edit it. -->
                 <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}
             </p>
-           
-    
-
+            <p>
+                {{ form.sizebook.label }}<br>
+                {{ form.sizebook() }}<br>
+                {% for error in form.sizebook.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.movie.label }}<br>
+                {{ form.movie() }}<br>
+                {% for error in form.movie.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.favtrope.label }}<br>
+                {{ form.favtrope() }}<br>
+                {% for error in form.favtrope.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.dreamv.label }}<br>
+                {{ form.dreamv() }}<br>
+                {% for error in form.dreamv.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.pickbook.label }}<br>
+                {{ form.pickbook() }}<br>
+                {% for error in form.pickbook.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.booksyear.label }}<br>
+                {{ form.booksyear() }}<br>
+                {% for error in form.booksyear.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.bookquote.label }}<br>
+                {{ form.bookquote() }}<br>
+                {% for error in form.bookquote.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
             {{form.submit()}}
         </form>
-        
+    </div>
 {% endblock %}

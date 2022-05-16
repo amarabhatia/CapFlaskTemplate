@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block body %}
-<div class="bg-dark text-white">
+<div class="row" style="background-color:rgb(0, 0, 0); color: aliceblue ;">
 
 <div class="row">
     <div class="col-4">
@@ -17,7 +17,7 @@
         <div class="row border-bottom">
             <div class="col-2">
                 {% if loop.index == 1 %}
-                <h3 class="display-7 text-success">Date</h3>
+                <h3 class="display-7 text-success" >Date</h3>
                 {% endif %}
                 <a href="/bookreview/delete/{{bookreview.id}}">Delete</a> - 
                 <a href="/bookreview/{{bookreview.id}}">
@@ -28,37 +28,38 @@
                 {% if loop.index == 1 %}
                 <h3 class="display-7 text-success">User</h3>
                 {% endif %}
-                {{bookreview.author.username}}
+                <p style = "color: aliceblue;">{{bookreview.author.username}}</p>
             </div>
             <div class="col">
                 {% if loop.index == 1 %}
                     <h3 class="display-7 text-success">Book Title</h3>
                 {% endif %}
-                {{bookreview.booktitle}}
+                <p style = "color: aliceblue;">{{bookreview.booktitle}}</p>
             </div>
             <div class="col">
                 {% if loop.index == 1 %}
                     <h3 class="display-7 text-success">Author</h3>
                 {% endif %}
-                {{bookreview.authorname}}
+                <p style = "color: aliceblue;">{{bookreview.authorname}}</p>
             </div>
             <div class="col">
                 {% if loop.index == 1 %}
                     <h3 class="display-7 text-success">Rating</h3>
                 {% endif %}
-                 <p>{{bookreview.rating}}/5</p>
+                 <p style = "color: aliceblue;">{{bookreview.rating}}/5</p>
             </div>
             <div class="col">
                 {% if loop.index == 1 %}
                     <h3 class="display-7 text-success">Thoughts?</h3>
                 {% endif %}
-                {{bookreview.userthoughts}}
+                <p style = "color: aliceblue;"> {{bookreview.userthoughts}}</p>
+
             </div>
             <div class="col">
                 {% if loop.index == 1 %}
                     <h3 class="display-7 text-success">Spoilers?</h3>
                 {% endif %}
-                {{bookreview.spoilers}}
+               <p style = "color: aliceblue;"> {{bookreview.spoilers}}</p>
             </div>
         </div>
     {% endfor %}

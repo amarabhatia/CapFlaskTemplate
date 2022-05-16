@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block body %}
-<div class="bg-dark text-white">
+<div class="row" style="background-color:rgb(0, 0, 0); color: aliceblue ;">
 
 <div class="row">
     <div class="col-4">
@@ -37,7 +37,48 @@
                 {% endif %}
                 {{quiz.genre}}
             </div>
-           
+            <div class="col">
+                {% if loop.index == 1 %}
+                    <h3 class="display-7 text-success">What size book would you like to read?</h3>
+                {% endif %}
+                {{quiz.sizebook}}
+            </div>
+            <div class="col">
+                {% if loop.index == 1 %}
+                    <h3 class="display-7 text-success">Which movie did you like the best?</h3>
+                {% endif %}
+                {{quiz.movie}}
+            </div>
+            <div class="col">
+                {% if loop.index == 1 %}
+                    <h3 class="display-7 text-success">Which is your favortie trope?</h3>
+                {% endif %}
+                {{quiz.favtrope}}
+            </div>
+            <div class="col">
+                {% if loop.index == 1 %}
+                    <h3 class="display-7 text-success">Where is your dream vacation?</h3>
+                {% endif %}
+                {{quiz.dreamv}}
+            </div>
+            <div class="col">
+                {% if loop.index == 1 %}
+                    <h3 class="display-7 text-success">Would you pick up a non-school book?</h3>
+                {% endif %}
+                {{quiz.pickbook}}
+            </div>
+            <div class="col">
+                {% if loop.index == 1 %}
+                    <h3 class="display-7 text-success">How many books do you read per-year?</h3>
+                {% endif %}
+                {{quiz.booksyear}}
+            </div>
+            <div class="col">
+                {% if loop.index == 1 %}
+                    <h3 class="display-7 text-success">What is your favorite book quote?</h3>
+                {% endif %}
+                {{quiz.bookquote}}
+            </div>
         </div>
     {% endfor %}
 {% else %}

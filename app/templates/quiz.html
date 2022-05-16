@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block body %}
+<div class="row" style="background-color:rgb(0, 0, 0); color: aliceblue ;">
 <h3><a class="nav-link" href="/quiz/list">Click here to view everyones response</a>
 </h3>
 <h1 class="display-1">
@@ -18,21 +19,45 @@
             <img class="img-thumbnail" width = "100" src="/static/bdog.jpg">
         {% endif %} 
     </div>
-    <div class="col display-5">
+    <div class="col display-7">
         {% if current_user.fname and current_user.lname %}
             Real Name: {{current_user.fname}}  {{current_user.lname}} <br>
         {% endif %}
         
-   
-        likeread: {{quiz.likeread}} <br>
-        genre: {{quiz.genre}} <br>
-
-        
-
-
+       
+        Do you like to read: {{quiz.likeread}} <br>
+        What genre do you like: {{quiz.genre}} <br>
+        What size of a book are you looking to read: {{quiz.sizebook}} <br>
+        Favorite movie: {{quiz.movie}} <br>
+        Favorite saying: {{quiz.favtrope}} <br>
+        Dream vacation spot: {{quiz.dreamv}} <br>
+        Would you pick up a non-school book: {{quiz.pickbook}} <br>
+        How many books do you read per-year: {{quiz.booksyear}} <br>
+        Favorite book quote: {{quiz.bookquote}} <br>
     </div>
+     <div class="col display-4">
+        total: {{quiz.total}} <br>
+
+     <img width="200" src="/static/books/{{bookImg}}">
+        {% if quiz.total == 1 %}
+        <h5>You scored a one, based off of these facts you have been recomended a book that is a bit more 
+            academically challenging compared to some others, but we know you're up for the challenge!
+        </h5><br>
+         {% elif quiz.total == 2 %}
+         
+         <h5>You scored a two, based off of this we have recommended you books that are mainly fiction, but some non-fiction as well.
+             We know you are up for the challenge of them! </h5><br>
+         {% else %}
+         <h5>You scored a three, based on this we have suggested some books that focus more on getting you into reading, but don't worry 
+             they will still challenge you academically! </h5><br>
+         {% endif %}
+     </div>
+
+
     
     
+
+</div>
 </div>
 <br>
 
